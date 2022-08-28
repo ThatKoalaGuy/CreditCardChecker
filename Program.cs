@@ -59,6 +59,8 @@ namespace CreditCardChecker
             {
                 Console.WriteLine("The credit card is INVALID");
             }
+
+            Console.ReadLine();
         }
     }
 }
