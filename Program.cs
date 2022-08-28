@@ -53,11 +53,11 @@ namespace CreditCardChecker
 
             if (creditCardNumberSum % 10 == 0)
             {
-                Console.WriteLine("TRUE");
+                Console.WriteLine("The credit card is VALID");
             }
             else
             {
-                Console.WriteLine("FALSE");
+                Console.WriteLine("The credit card is INVALID");
             }
         }
     }
