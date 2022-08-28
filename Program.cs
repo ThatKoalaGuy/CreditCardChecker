@@ -15,34 +15,43 @@ namespace CreditCardChecker
             long creditCardLastNumber = creditCardNumber % 10;
             creditCardNumber = creditCardNumber / 10;
 
-            /*//create a list to store the digits of the credit card number
-            var creditCardNumberList = new List<long>();
-            //loop through the credit card number and add the digits to the list
+            //create a list and store the digits of the credit card number
+            List<long> creditCardNumberList = new List<long>();
             while (creditCardNumber > 0)
             {
                 creditCardNumberList.Add(creditCardNumber % 10);
                 creditCardNumber = creditCardNumber / 10;
             }
-            
-            creditCardNumberList.ForEach(Console.WriteLine);*/
 
-
-
-            //Console.WriteLine(creditCardNumberMultiplied);
-            //Every time you have a two-digit number, just add those digits together for a one-digit result
-            for (int i = 0; i < creditCardNumberMultiplied.ToString().Length; i++)
+            //starting with the first number in the list, multiply every second number by two
+            for (int i = 0; i < creditCardNumberList.Count; i++)
             {
                 if (i % 2 == 0)
                 {
-                    creditCardNumberMultiplied += creditCardNumberMultiplied % 10;
-                    creditCardNumberMultiplied = creditCardNumberMultiplied / 10;
+                    creditCardNumberList[i] = creditCardNumberList[i] * 2;
                 }
             }
 
-            creditCardNumber = creditCardNumberMultiplied + creditCardLastNumber;
-            
-            //print true if the long creditCardNumber is divisible by 10
-            if (creditCardNumber % 10 == 0)
+            //if you get a two digit number, then add the two digits
+            for (int i = 0; i < creditCardNumberList.Count; i++)
+            {
+                if (creditCardNumberList[i] > 9)
+                {
+                    creditCardNumberList[i] = creditCardNumberList[i] % 10 + creditCardNumberList[i] / 10;
+                }
+            }
+
+            //add all the numbers in the list together
+            long creditCardNumberSum = 0;
+            foreach (long number in creditCardNumberList)
+            {
+                creditCardNumberSum += number;
+            }
+
+            //add the creditCardLastNumber to the sum
+            creditCardNumberSum += creditCardLastNumber;
+
+            if (creditCardNumberSum % 10 == 0)
             {
                 Console.WriteLine("TRUE");
             }
@@ -50,8 +59,6 @@ namespace CreditCardChecker
             {
                 Console.WriteLine("FALSE");
             }
-
-
         }
     }
 }
