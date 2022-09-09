@@ -55,6 +55,7 @@ namespace CreditCardChecker
             {
                 Console.WriteLine("The credit card is VALID");
             }
+            
             else
             {
                 Console.WriteLine("The credit card is INVALID");
